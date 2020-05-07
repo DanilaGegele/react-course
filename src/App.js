@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Menu from './components/Menu/Menu'
+import PageDetail from './Pages/PageDetail/PageDetail'
 
 function App () {
   return (
@@ -13,7 +14,7 @@ function App () {
         <Row>
           <Col lg={2}><Menu /></Col>
           <Col lg={10}>
-            <h2>Основной контент</h2>
+            <PageDetail />
           </Col>
         </Row>
       </Container>
