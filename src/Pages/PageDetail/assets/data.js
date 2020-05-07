@@ -15,9 +15,23 @@ const data = {
   <li>Пункт 2</li>
   <li>Пункт 3</li>
 </ol>
+<table>
+  <tr>
+    <th>Столбец 1</th>
+    <th>Столбец 2</th>
+    <th>Столбец 3</th>
+  </tr>
+  <tr>
+    <td>Ячейка 1</td>
+    <td>Ячейка 2</td>
+    <td>Ячейка 3</td>
+  </tr>
+</table>
 <img src='/logo512.png' alt='asdasd' />
 `,
-  title: 'Первая новость'
+  title: 'Первая новость',
+  img: '/logo512.png',
+  date: '07.05.2020'
 }
 
 export default data
