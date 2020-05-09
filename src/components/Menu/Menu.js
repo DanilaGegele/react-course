@@ -1,17 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import css from './Menu.module.scss'
 
 function Menu () {
   return (
     <>
       <h2>Меню</h2>
-      <ul>
-        <li>Пункт 1</li>
-        <li>Пункт 2</li>
-        <li>Пункт 3</li>
-        <li>Пункт 4</li>
-        <li>Пункт 5</li>
-        <li>Пункт 6</li>
-      </ul>
+      <div><NavLink to='/' activeClassName={css.active} exact>На главную</NavLink></div>
+      <div><NavLink to='/detail' activeClassName={css.active}>Детальная страница</NavLink></div>
+      <div><NavLink to='/css-module' activeClassName={css.active}>Css module</NavLink></div>
     </>
   )
 }
