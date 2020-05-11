@@ -7,6 +7,30 @@ import { Link } from 'react-router-dom'
 function PageList () {
   const { list: dataList } = data
   const [list, setList] = useState(dataList)
+
+  const renderButton = () => {
+    if (list.length > 4) {
+      return (
+        <Button
+          as={Link}
+          to='/'
+        >
+          Посмотреть все новости
+        </Button>
+      )
+    } else {
+      return (
+        <Button
+          onClick={() => {
+            setList([...list, ...dataList])
+          }}
+        >
+          Показать еще
+        </Button>
+      )
+    }
+  }
+
   return (
     <>
       <h1>Список</h1>
@@ -18,13 +42,7 @@ function PageList () {
           </ListGroup.Item>
         ))}
       </ListGroup>
-      <Button
-        onClick={() => {
-          setList([...list, ...data.list])
-        }}
-      >
-        Показать еще
-      </Button>
+      {renderButton()}
     </>
   )
 }
