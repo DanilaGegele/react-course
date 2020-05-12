@@ -1,9 +1,36 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Wysiwyg from '../../components/Wysiwyg/Wysiwyg'
-import data from './assets/data'
+import { axiosLocal } from '../../services/axiosInstances'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as PageDetailActions from './_actions/PageDetailActions'
 
-function PageDetail () {
+function mapStateToProps (state) {
+  return {
+    pageDetailState: state.pageDetail
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    pageDetailActions: bindActionCreators(PageDetailActions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageDetail)
+
+function PageDetail (props) {
+  const { pageDetailState: { isAjax, data, isEmpty }, pageDetailActions: { startLoading, endLoading } } = props
   const { text, title, img, date } = data
+
+  if (isEmpty && !isAjax) {
+    startLoading()
+    axiosLocal.get('pageDetail.json').then((response) => {
+      endLoading(response)
+    })
+  }
+
   return (
     <div>
       <h1>{title}</h1>
@@ -14,4 +41,7 @@ function PageDetail () {
   )
 }
 
-export default PageDetail
+PageDetail.propTypes = {
+  pageDetailState: PropTypes.object,
+  pageDetailActions: PropTypes.object
+}
