@@ -1,4 +1,4 @@
-import { START_LOADING_PAGE_DETAIL, END_LOADING_PAGE_DETAIL } from '../_reducers/pageDetail'
+import { START_LOADING_PAGE_DETAIL, END_LOADING_PAGE_DETAIL, RELOAD_PAGE_DETAIL } from '../_reducers/pageDetail'
 
 export function startLoading () {
   return (dispatch) => {
@@ -13,6 +13,14 @@ export function endLoading ({ data }) {
     dispatch({
       type: END_LOADING_PAGE_DETAIL,
       payload: data
+    })
+  }
+}
+
+export function reload () {
+  return (dispatch) => {
+    dispatch({
+      type: RELOAD_PAGE_DETAIL
     })
   }
 }
