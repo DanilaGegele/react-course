@@ -18,8 +18,8 @@ function PageList () {
         <RemoteDataProvider {...options}>
           {({ response: { data } }) => {
             return (
-              data.map(({ title, description }, key) => (
-                <ListGroup.Item key={key} as={Link} to='/detail'>
+              data.map(({ title, description, code }, key) => (
+                <ListGroup.Item key={key} as={Link} to={`/list/${code}`}>
                   <h3>{title}</h3>
                   <div>{description}</div>
                 </ListGroup.Item>

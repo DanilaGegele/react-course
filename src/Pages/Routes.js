@@ -14,6 +14,7 @@ function Routes () {
       <Route path='/detail' component={PageDetail} />
       <Route path='/detail-rdp' component={PageDetailRDP} />
       <Route path='/css-module' component={CssModulePage} />
+      <Route path='/list/:code' component={PageDetailRDP} />
       <Route path='/list' component={PageList} />
       <Route path='*' component={Page404} />
     </Switch>

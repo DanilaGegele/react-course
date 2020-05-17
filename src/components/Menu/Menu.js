@@ -11,7 +11,7 @@ function Menu () {
       <div><NavLink to='/detail-rdp' activeClassName={css.active}>Детальная страница RDP</NavLink></div>
       <div><NavLink to='/css-module' activeClassName={css.active}>Css module</NavLink></div>
       <div><NavLink to='/asdasdas' activeClassName={css.active}>404</NavLink></div>
-      <div><NavLink to='/list' activeClassName={css.active}>Список</NavLink></div>
+      <div><NavLink to='/list' activeClassName={css.active}>Список и деталка</NavLink></div>
     </>
   )
 }
