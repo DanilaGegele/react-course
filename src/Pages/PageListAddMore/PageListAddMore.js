@@ -23,7 +23,7 @@ function PageListAddMore () {
       <h1>Список</h1>
       <ListGroup>
         <RemoteDataProviderCollector {...options}>
-          {({ response: { data }, request: { params: { page } } }, { setChangeableRequest }) => {
+          {({ response: { data, totalPages }, request: { params: { page } } }, { setChangeableRequest }) => {
             const onClick = () => {
               setChangeableRequest({
                 params: {
@@ -39,9 +39,11 @@ function PageListAddMore () {
                     <div>{description}</div>
                   </ListGroup.Item>
                 ))}
-                <Button onClick={onClick}>
-                  Показать еще
-                </Button>
+                {page < totalPages && (
+                  <Button onClick={onClick}>
+                    Показать еще
+                  </Button>
+                )}
               </>
             )
           }}
