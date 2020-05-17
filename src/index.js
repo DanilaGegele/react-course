@@ -7,9 +7,14 @@ import { BrowserRouter } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker'
 import configureStore from './services/store/configureStore'
 import { Provider } from 'react-redux'
+import { setRDPDefaultProps } from '@aic/react-remote-data-provider'
+import { axiosLocal } from './services/axiosInstances'
 
 const store = configureStore()
 console.log(store.getState())
+setRDPDefaultProps({
+  axiosInstance: axiosLocal
+})
 
 ReactDOM.render(
   <Provider store={store}>

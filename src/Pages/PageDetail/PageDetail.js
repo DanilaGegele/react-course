@@ -31,7 +31,6 @@ function PageDetail (props) {
       endLoading(response)
     })
   }
-
   return (
     <div>
       <h1>{title}</h1>

@@ -2,13 +2,14 @@
 # yarn lockfile v1
 
 
-"@aic/react-remote-data-provider@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@aic/react-remote-data-provider/-/react-remote-data-provider-2.1.1.tgz#2a42bfb0ec1062ec0fdc19751ac92a8745343c3c"
-  integrity sha512-Qx737Jtqtbg9sZFGfMfeo2nzrHHmL2vwZBV5hYsPiIDN9TCT1QifVarxHo+8w8FWdqldU3qzTYUPQKrHKsuG4w==
+"@aic/react-remote-data-provider@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@aic/react-remote-data-provider/-/react-remote-data-provider-3.0.2.tgz#6080fb0201cc00a07aec0c3243c41e3b9f4e6b04"
+  integrity sha512-GfsltQ+T7lWDTDdsoYwOacyUvaW4OzZECdx1gUUi9Z25I/RLaGtJG/HW8PO3w6UPcq7TJNijZ1SfePdhuBe3/w==
   dependencies:
     "@types/react" "16.4.14"
     axios "^0.18.0"
+    clean-set "1.1.1"
     hoist-non-react-statics "^3.2.1"
     lodash "^4.17.0"
     nanoid "2.0.3"
@@ -2923,7 +2924,7 @@ clean-css@^4.2.3:
   dependencies:
     source-map "~0.6.0"
 
-clean-set@^1.1.1:
+clean-set@1.1.1, clean-set@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clean-set/-/clean-set-1.1.1.tgz#513a0930d0d0e3c0746311ed36e476a07f50facb"
   integrity sha512-Y6SWC6BKolLY9oAMaeK2PXJddllH+lpwFtP+KOK8hs+2gS8O2KN9a/j71pmIuTcF+JPh/2TPgVDliJ4x8JQCdA==
