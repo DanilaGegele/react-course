@@ -7,6 +7,7 @@ import Page404 from './Page404/Page404'
 import PageList from './PageList/PageList'
 import PageDetailRDP from './PageDetailRDP/PageDetailRDP'
 import PageListAddMore from './PageListAddMore/PageListAddMore'
+import PageListPagination from './PageListPagination/PageListPagination'
 
 function Routes () {
   return (
@@ -18,6 +19,7 @@ function Routes () {
       <Route path='/list/:code' component={PageDetailRDP} />
       <Route path='/list' component={PageList} />
       <Route path='/list-add-more' component={PageListAddMore} />
+      <Route path='/list-pagination' component={PageListPagination} />
       <Route path='*' component={Page404} />
     </Switch>
   )
