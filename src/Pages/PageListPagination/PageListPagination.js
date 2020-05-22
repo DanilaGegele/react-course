@@ -5,14 +5,26 @@ import { Link } from 'react-router-dom'
 import Pagination from '../../components/Pagination/Pagination'
 import PropTypes from 'prop-types'
 import qs from 'qs'
+import { Button } from 'react-bootstrap'
 
 function PageListPagination (props) {
   const { location } = props
-  const page = +qs.parse(location.search, { ignoreQueryPrefix: true }).page || 0
+  const page = +qs.parse(location.search, { ignoreQueryPrefix: true }).page || 1
 
   function handlePageClick ({ selected }) {
     const { history, location } = props
-    const params = { page: selected || null }
+    const params = { page: selected ? selected + 1 : null }
+    const updateSearch = { ...qs.parse(location.search, { ignoreQueryPrefix: true }), ...params }
+    history.push(`${location.pathname}${qs.stringify(updateSearch, { addQueryPrefix: true, skipNulls: true })}`)
+  }
+
+  function handleButtonClick () {
+    const { history, location } = props
+    const id = +qs.parse(location.search, { ignoreQueryPrefix: true }).id
+    let params = { id: 1 }
+    if (id === 1) {
+      params = { id: null }
+    }
     const updateSearch = { ...qs.parse(location.search, { ignoreQueryPrefix: true }), ...params }
     history.push(`${location.pathname}${qs.stringify(updateSearch, { addQueryPrefix: true, skipNulls: true })}`)
   }
@@ -43,10 +55,11 @@ function PageListPagination (props) {
                 ))}
               </ListGroup>
               <Pagination
-                initialPage={page}
+                initialPage={page - 1}
                 pageCount={totalPages}
                 handlePageClick={handlePageClick}
               />
+              <Button onClick={handleButtonClick}>Добавить id=1</Button>
             </>
           )
         }}
