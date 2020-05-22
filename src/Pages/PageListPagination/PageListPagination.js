@@ -1,11 +1,21 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { RemoteDataProvider } from '@aic/react-remote-data-provider'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Link } from 'react-router-dom'
 import Pagination from '../../components/Pagination/Pagination'
+import PropTypes from 'prop-types'
+import qs from 'qs'
 
-function PageListPagination () {
-  const [page, setPage] = useState(0)
+function PageListPagination (props) {
+  const { location } = props
+  const page = +qs.parse(location.search, { ignoreQueryPrefix: true }).page || 0
+
+  function handlePageClick ({ selected }) {
+    const { history, location } = props
+    const params = { page: selected || null }
+    const updateSearch = { ...qs.parse(location.search, { ignoreQueryPrefix: true }), ...params }
+    history.push(`${location.pathname}${qs.stringify(updateSearch, { addQueryPrefix: true, skipNulls: true })}`)
+  }
 
   const options = {
     request: {
@@ -35,9 +45,7 @@ function PageListPagination () {
               <Pagination
                 initialPage={page}
                 pageCount={totalPages}
-                handlePageClick={({ selected }) => {
-                  setPage(selected)
-                }}
+                handlePageClick={handlePageClick}
               />
             </>
           )
@@ -45,6 +53,11 @@ function PageListPagination () {
       </RemoteDataProvider>
     </>
   )
+}
+
+PageListPagination.propTypes = {
+  location: PropTypes.object,
+  history: PropTypes.object
 }
 
 export default PageListPagination
