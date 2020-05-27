@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Wysiwyg from '../../components/Wysiwyg/Wysiwyg'
 import { axiosLocal } from '../../services/axiosInstances'
@@ -22,18 +22,22 @@ function mapDispatchToProps (dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(PageDetail)
 
 function PageDetail (props) {
+  const [count, setCount] = useState(0)
   const { pageDetailState: { isAjax, data, isEmpty }, pageDetailActions: { startLoading, endLoading, reload } } = props
   const { text, title, img, date } = data
+  useEffect(() => {
+    if (isEmpty && !isAjax) {
+      startLoading()
+      axiosLocal.get('pageDetail.json').then((response) => {
+        endLoading(response)
+      })
+    }
+  }, [endLoading, isAjax, isEmpty, startLoading])
 
-  if (isEmpty && !isAjax) {
-    startLoading()
-    axiosLocal.get('pageDetail.json').then((response) => {
-      endLoading(response)
-    })
-  }
   return (
     <div>
-      <h1>{title}</h1>
+      <Button onClick={() => { setCount((count) => count + 1) }}>Rerender</Button>
+      <h1>{title} {count}</h1>
       <img src={img} alt='' />
       <div>{date}</div>
       <Wysiwyg text={text} />
