@@ -9,6 +9,7 @@ import PageDetailRDP from './PageDetailRDP/PageDetailRDP'
 import PageListAddMore from './PageListAddMore/PageListAddMore'
 import PageListPagination from './PageListPagination/PageListPagination'
 import PageListPagination2 from './PageListPagination/PageListPagination2'
+import PageMouseMove from './PageMouseMove/PageMouseMove'
 
 function Routes () {
   return (
@@ -22,6 +23,7 @@ function Routes () {
       <Route path='/list-add-more' component={PageListAddMore} />
       <Route path='/list-pagination' component={PageListPagination} />
       <Route path='/list-pagination2' component={PageListPagination2} />
+      <Route path='/mouse-move' component={PageMouseMove} />
       <Route path='*' component={Page404} />
     </Switch>
   )
