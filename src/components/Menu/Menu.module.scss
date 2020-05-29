@@ -1,3 +1,12 @@
 .active{
   font-weight: bold;
 }
+.wrap{
+  position: sticky;
+  top: 0;
+  transition: top 0.3s ease;
+  &._header{
+    top: 56px;
+  }
+}
+

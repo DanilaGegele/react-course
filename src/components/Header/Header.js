@@ -1,27 +1,30 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import Container from 'react-bootstrap/Container'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 import css from './Header.module.scss'
 import classNames from 'classnames'
+import { useSelector, useDispatch } from 'react-redux'
+import { setIsFixed, setIsFixedOnTop } from './_actions/HeaderActions'
 
 function Header () {
   const lastScrollTop = useRef(0)
-  const [isFixed, setIsFixed] = useState(true)
-  const [isFixedOnTop, setIsFixedOnTop] = useState(true)
+  const isFixed = useSelector(state => state.header.isFixed)
+  const isFixedOnTop = useSelector(state => state.header.isFixedOnTop)
+  const dispatch = useDispatch()
   useEffect(() => {
     const onScroll = () => {
       const top = window.pageYOffset
       if (lastScrollTop.current > top && !isFixed) {
-        setIsFixed(true)
+        setIsFixed(true)(dispatch)
       } else if (lastScrollTop.current <= top && top > 100 && isFixed) {
-        setIsFixed(false)
+        setIsFixed(false)(dispatch)
       }
 
       if (top === 0 && !isFixedOnTop) {
-        setIsFixedOnTop(true)
+        setIsFixedOnTop(true)(dispatch)
       } else if (isFixedOnTop) {
-        setIsFixedOnTop(false)
+        setIsFixedOnTop(false)(dispatch)
       }
 
       lastScrollTop.current = top
@@ -31,7 +34,7 @@ function Header () {
     return () => {
       window.removeEventListener('scroll', onScroll)
     }
-  }, [isFixed, isFixedOnTop])
+  }, [dispatch, isFixed, isFixedOnTop])
   return (
     <div className={css.header}>
       <div
