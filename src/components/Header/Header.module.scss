@@ -1,0 +1,21 @@
+.header{
+  height: 56px;
+  position: relative;
+  z-index: 998;
+}
+.wrap{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  transition: .3s ease;
+  transform: translateY(-100%);
+  &._fixed{
+    transform: translateY(0);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  }
+  &._fixed_on_top{
+    box-shadow: none;
+  }
+}
