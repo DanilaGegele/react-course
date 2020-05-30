@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setOffset } from './_actions/PageMouseMoveActions'
 
 function PageMouseMove () {
-  const [offsetX, setOffsetX] = useState(0)
-  const [offsetY, setOffsetY] = useState(0)
+  const { offsetX, offsetY } = useSelector(state => state.pageMouseMove)
+  const dispatch = useDispatch()
   useEffect(() => {
-    const mouseMove = ({ offsetX, offsetY }) => {
-      setOffsetX(offsetX)
-      setOffsetY(offsetY)
-    }
+    const mouseMove = ({ offsetX, offsetY }) => setOffset({ offsetX, offsetY })(dispatch)
     window.addEventListener('mousemove', mouseMove)
     return () => {
       window.removeEventListener('mousemove', mouseMove)
     }
-  }, [])
+  }, [dispatch])
   return (
     <div>
       X - {offsetX}, Y - {offsetY}
