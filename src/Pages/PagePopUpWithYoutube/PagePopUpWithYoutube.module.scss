@@ -1,0 +1,10 @@
+.modal {
+  @media (min-width: 576px) {
+    &:global(.modal-dialog) {
+      max-width: calc(640px + 1rem*2 + 2px);
+    }
+  }
+  iframe{
+    display: block;
+  }
+}
