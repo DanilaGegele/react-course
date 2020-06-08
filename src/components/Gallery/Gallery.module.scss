@@ -8,4 +8,23 @@
     }
   }
 }
+.prev{
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  z-index: 10;
+  &:global(.swiper-button-disabled){
+    opacity: 0.5;
+  }
+}
+
+.next{
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  z-index: 10;
+  &:global(.swiper-button-disabled){
+    opacity: 0.5;
+  }
+}
 
