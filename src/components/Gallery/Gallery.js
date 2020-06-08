@@ -13,6 +13,7 @@ function Gallery ({ data }) {
   const [swiper, setSwiper] = useState(null)
   const [isBeginning, setIsBeginning] = useState(true)
   const [isEnd, setIsEnd] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const goNext = () => {
     if (swiper !== null) {
@@ -23,6 +24,12 @@ function Gallery ({ data }) {
   const goPrev = () => {
     if (swiper !== null) {
       swiper.slidePrev()
+    }
+  }
+
+  const goTo = (num) => {
+    if (swiper !== null) {
+      swiper.slideTo(num)
     }
   }
 
@@ -61,9 +68,10 @@ function Gallery ({ data }) {
     },
     on: {
       slideChangeTransitionStart: function () {
-        const { isBeginning, isEnd } = this
+        const { isBeginning, isEnd, activeIndex } = this
         setIsBeginning(isBeginning)
         setIsEnd(isEnd)
+        setActiveIndex(activeIndex)
       }
     }
   }
@@ -75,6 +83,11 @@ function Gallery ({ data }) {
       </Swiper>
       <ButtonGroup>
         <Button onClick={goPrev} variant={isBeginning ? 'secondary' : 'primary'}>Prev</Button>
+        {data.map((item, key) => {
+          return (
+            <Button key={key} onClick={() => { goTo(key) }} variant={activeIndex === key ? 'secondary' : 'primary'}>{key + 1}</Button>
+          )
+        })}
         <Button onClick={goNext} variant={isEnd ? 'secondary' : 'primary'}>Next</Button>
       </ButtonGroup>
     </div>
