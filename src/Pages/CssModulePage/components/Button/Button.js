@@ -19,10 +19,18 @@ function Button ({ className, isRed, label }) {
   return (
     <button
       className={btnClass}
-      onMouseDown={() => { setIsPressed(true) }}
-      onMouseUp={() => { setIsPressed(false) }}
-      onMouseEnter={() => { setIsHovered(true) }}
-      onMouseLeave={() => { setIsHovered(false) }}
+      onMouseDown={() => {
+        setIsPressed(true)
+      }}
+      onMouseUp={() => {
+        setIsPressed(false)
+      }}
+      onMouseEnter={() => {
+        setIsHovered(true)
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false)
+      }}
     >
       <div className='label'>{label}</div>
     </button>

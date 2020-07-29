@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin: 10px 10px 0px ;
+}
+
+
+.input {
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid #eee;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+
+  &:global(.input-hovered) {
+    background-color: aqua;
+  }
+  &:global(.input-focused) {
+    background-color: darkorange;
+    color: white;
+  }
+}
+
+.wide {
+  width: 200px;
+}
