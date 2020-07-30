@@ -14,6 +14,7 @@ function Menu () {
       <div><NavLink to='/list' activeClassName={css.active}>Список и деталка</NavLink></div>
       <div><NavLink to='/list-add-more' activeClassName={css.active}>Список с подгрузкой</NavLink></div>
       <div><NavLink to='/list-pagination' activeClassName={css.active}>Список с пагинацией</NavLink></div>
+      <div><NavLink to='/list-pagination-2' activeClassName={css.active}>Список с пагинацией 2</NavLink></div>
     </>
   )
 }
