@@ -1,14 +1,21 @@
 import React from 'react'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Link } from 'react-router-dom'
-import { RemoteDataProvider } from '@aic/react-remote-data-provider'
+import { RemoteDataProviderCollector } from '@aic/react-remote-data-provider/extensions/collector'
 import { Button } from 'react-bootstrap'
 
 const options = {
   request: {
     url: 'pageList.json'
   },
-  reducerKey: 'PageList'
+  changeableRequest: {
+    params: {
+      page: 1
+    }
+  },
+  path: 'data',
+  reducerKey: 'PageListAddMore',
+  totalPages: 3
 }
 
 function PageListAddMore () {
@@ -16,21 +23,34 @@ function PageListAddMore () {
     <>
       <h1>Список</h1>
       <ListGroup>
-        <RemoteDataProvider {...options}>
-          {({ response: { data } }) => {
+        <RemoteDataProviderCollector {...options}>
+          {({ response: { data }, request: { params: { page } } }, { setChangeableRequest }) => {
+            const onClick = () => {
+              setChangeableRequest({
+                params: {
+                  page: page + 1
+                }
+              })
+            }
             return (
-              data.map(({ title, description, code }, key) => (
-                <ListGroup.Item key={key} as={Link} to={`/list/${code}`}>
-                  <h3>{title}</h3>
-                  <div>{description}</div>
-                </ListGroup.Item>
-              ))
+              <>
+                {data.map(({ title, description, code }, key) => (
+                  <ListGroup.Item key={key} as={Link} to={`/list/${code}`}>
+                    <h3>{title}</h3>
+                    <div>{description}</div>
+                  </ListGroup.Item>
+                ))}
+                {page !== options.totalPages && (
+                  <Button
+                    onClick={onClick}
+                  >
+                    Показать еще
+                  </Button>)}
+
+              </>
             )
           }}
-        </RemoteDataProvider>
-        <Button onClick={() => { console.log('загрузить еще') }}>
-          Показать еще
-        </Button>
+        </RemoteDataProviderCollector>
       </ListGroup>
     </>
   )
