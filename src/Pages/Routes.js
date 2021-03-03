@@ -11,6 +11,7 @@ import PageListPagination from './PageListPagination/PageListPagination'
 import PageListPagination2 from './PageListPagination/PageListPagination2'
 import PageMouseMove from './PageMouseMove/PageMouseMove'
 import PagePopUpWithYoutube from './PagePopUpWithYoutube/PagePopUpWithYoutube'
+import PageSwiper from './PageSwiper/PageSwiper'
 
 function Routes () {
   return (
@@ -26,6 +27,7 @@ function Routes () {
       <Route path='/list-pagination2' component={PageListPagination2} />
       <Route path='/mouse-move' component={PageMouseMove} />
       <Route path='/popup' component={PagePopUpWithYoutube} />
+      <Route path='/swiper' component={PageSwiper} />
       <Route path='*' component={Page404} />
     </Switch>
   )
