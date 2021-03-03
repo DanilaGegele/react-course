@@ -30,6 +30,7 @@ function Menu () {
       <div><NavLink to='/list-pagination2' activeClassName={css.active}>Список с пагинацией 2</NavLink></div>
       <div><NavLink to='/mouse-move' activeClassName={css.active}>useEffect mouseMove</NavLink></div>
       <div><NavLink to='/popup' activeClassName={css.active}>Popup</NavLink></div>
+      <div><NavLink to='/swiper' activeClassName={css.active}>Swiper Gallery</NavLink></div>
       {renderOffset()}
     </div>
   )
