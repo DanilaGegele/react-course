@@ -19,7 +19,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
-    "qs": "^6.9.4",
+    "qs": "^6.9.7",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
